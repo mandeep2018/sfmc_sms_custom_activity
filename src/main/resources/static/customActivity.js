@@ -3,6 +3,7 @@
 define(function (require) {
 	var Postmonger = require('postmonger');
 	var connection = new Postmonger.Session();
+	alert("inside customActivity JS ");
 	var payload = {};
 	var steps = [
 		{'key': 'eventdefinitionkey', 'label': 'Event Definition Key'},

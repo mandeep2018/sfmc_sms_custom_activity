@@ -1,35 +1,35 @@
 {
+	"workflowApiVersion": "1.1",
 	"key": "<YOUR APPLICATION EXTENSION KEY HERE>",
 	"metaData": {
 		"icon": "images/icon.png",
 		"iconSmall": "images/icon_small.png"
 	},
-	"type": "<TYPE, FOR CUSTOM ACTIVITY USE RESTDECISION>",
+	"type": "REST",
 	"lang": {
 		"en-US": {
-			"name": "<CUSTOM ACTIVITY NAME>",
-			"description": "<CUSTOM ACTIVITY DESCRIPTION>"
+			"name": "SMS CUSTOM ACTIVITY" ,
+			"description": "Custom Activity to call send SMSs using SMS Gateway"
 		}
 	},
-	"workflowApiVersion": "1.1",
 	"configurationArguments": {
 		"applicationExtensionKey": "<YOUR APPLICATION EXTENSION KEY HERE>",
 		"save": {
-			"url": "https://<URL OF THE SERVER RUNNING THE BACKEND>/activity/save",
+			"url": "https://sms-custom-activity-bite.herokuapp.com/activity/save",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
 			"customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
 		},
 		"publish": {
-			"url": "https://<URL OF THE SERVER RUNNING THE BACKEND>/activity/publish",
+			"url": "https://sms-custom-activity-bite.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
 			"customerKey": "<EXTERNAL KEY OF THE SALT KEY FOR THE JWT>"
 		},
 		"validate": {
-			"url": "https://<URL OF THE SERVER RUNNING THE BACKEND>/activity/validate",
+			"url": "https://sms-custom-activity-bite.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
@@ -70,7 +70,7 @@
 		"execute": {
 			"inArguments": [],
 			"outArguments": [],
-			"url": "https://<URL OF THE SERVER RUNNING THE BACKEND>/activity/execute",
+			"url": "https://sms-custom-activity-bite.herokuapp.com/activity/execute",
 			"verb": "POST",
 			"body": "",
 			"header": "",
@@ -81,8 +81,31 @@
 		}
 	},
 	"edit": {
-		"url": "https://<URL OF THE SERVER RUNNING THE BACKEND>/index.html",
+		"url": "https://sms-custom-activity-bite.herokuapp.com/index.html",
 		"height": 200,
 		"width": 500
+	},
+	"schema": {
+		"arguments": {
+			"execute": {
+				"inArguments": [{
+					"ohoneNumber": {
+						"dataType": "Number",
+						"isNullable": false,
+						"direction": "in"
+					}
+				},
+				
+				{
+					"message": {
+						"dataType": "Text",
+						"isNullable": false,
+						"direction": "in"
+					}
+				}
+				],
+				"outArguments": []
+			}
+		}
 	}
 }
